@@ -1,25 +1,28 @@
 import { useState } from "react";
 import "./App.css";
+import { Controls } from "./components/Controls";
+import { Scene } from "./components/Scene";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [lightIntensity, setLightIntensity] = useState(1);
+  const [lightColor, setLightColor] = useState("#ffffff");
+  const [objectColor, setObjectColor] = useState("#ff6347");
 
   return (
     <>
-      <div>
-        <h1>Vite + React + TypeScript</h1>
-      </div>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Scene
+        lightIntensity={lightIntensity}
+        lightColor={lightColor}
+        objectColor={objectColor}
+      />
+      <Controls
+        lightIntensity={lightIntensity}
+        lightColor={lightColor}
+        objectColor={objectColor}
+        onLightIntensityChange={setLightIntensity}
+        onLightColorChange={setLightColor}
+        onObjectColorChange={setObjectColor}
+      />
     </>
   );
 }
